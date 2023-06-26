@@ -20,5 +20,10 @@ public class PerformanceResource extends CrudResource<Performance> {
 	protected JpaRepository<Performance, Long> getRepository() {
 		return repository;
 	}
+
+	@Override
+	protected void setDataForUpdate(Performance older, Performance newer) {
+		older.setPerformance(newer.getPerformance());
+	}
 	
 }

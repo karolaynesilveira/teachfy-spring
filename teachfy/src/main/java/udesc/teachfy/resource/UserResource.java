@@ -39,4 +39,14 @@ public class UserResource extends CrudResource<User>{
 			return new ResponseEntity(new Response(except.getMessage()), HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	@Override
+	protected void setDataForUpdate(User older, User newer) {
+		older.setName(newer.getName());
+		older.setEmail(newer.getEmail());
+
+		BCryptPasswordEncoder bcrypy = new BCryptPasswordEncoder();
+		older.setPassword(bcrypy.encode(newer.getPassword()));
+	}
+	
 }

@@ -59,7 +59,7 @@ abstract public class CrudResource<M> {
 		try {
 			Optional<M> newRecord = getRepository().findById(id);
 			if (!newRecord.isEmpty()) {
-				//set new data
+				setDataForUpdate(newRecord.get(), record);
 				return new ResponseEntity(new Response("Registro alterado com sucesso", newRecord.get()), HttpStatus.OK);
 			}
 			return new ResponseEntity(new Response("Registro não encontrado"), HttpStatus.NOT_FOUND);			
@@ -67,6 +67,8 @@ abstract public class CrudResource<M> {
 			return new ResponseEntity(new Response(except.getMessage()), HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	protected void setDataForUpdate(M older, M newer) {}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Response> delete(@PathVariable Long id) {

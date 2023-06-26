@@ -20,5 +20,10 @@ public class ParticipantResource extends CrudResource<Participant> {
 	protected JpaRepository<Participant, Long> getRepository() {
 		return repository;
 	}
+
+	@Override
+	protected void setDataForUpdate(Participant older, Participant newer) {
+		older.setPermission(newer.getPermission());
+	}
 	
 }

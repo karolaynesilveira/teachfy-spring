@@ -20,5 +20,13 @@ public class FolderResource extends CrudResource<Folder> {
 	protected JpaRepository<Folder, Long> getRepository() {
 		return repository;
 	}
+
+	@Override
+	protected void setDataForUpdate(Folder older, Folder newer) {
+		older.setFolder(newer.getFolder());
+		older.setName(newer.getName());
+		older.setPublico(newer.getPublico());
+		older.setClonable(newer.getClonable());
+	}
 	
 }

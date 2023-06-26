@@ -21,4 +21,12 @@ public class AnswerResource extends CrudResource<Answer> {
 		return repository;
 	}
 	
+	@Override
+	protected void setDataForUpdate(Answer older, Answer newer) {
+		older.setOption(newer.getOption());
+		older.setDifficulty(newer.getDifficulty());
+		older.setGrade(newer.getGrade());
+		older.setFeedback(newer.getFeedback());
+	}
+	
 }
