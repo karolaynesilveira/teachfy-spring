@@ -4,21 +4,21 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import udesc.teachfy.model.User;
-import udesc.teachfy.repository.UserRepository;
+import udesc.teachfy.model.Card;
+import udesc.teachfy.repository.CardRepository;
 
-@RequestMapping(path="/users")
+@RequestMapping(path="/cards")
 @RestController
-public class UserResource extends CrudResource<User>{
+public class CardResource extends CrudResource<Card> {
 
-	UserRepository repository;
+	CardRepository repository;
 	
-	public UserResource(UserRepository repository) {
+	public CardResource(CardRepository repository) {
 		this.repository = repository;
 	}
 	
-	protected JpaRepository<User, Long> getRepository() {
+	protected JpaRepository<Card, Long> getRepository() {
 		return repository;
 	}
-
+	
 }

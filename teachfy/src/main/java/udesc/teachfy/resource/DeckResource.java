@@ -4,21 +4,21 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import udesc.teachfy.model.User;
-import udesc.teachfy.repository.UserRepository;
+import udesc.teachfy.model.Deck;
+import udesc.teachfy.repository.DeckRepository;
 
-@RequestMapping(path="/users")
+@RequestMapping(path="/answers")
 @RestController
-public class UserResource extends CrudResource<User>{
+public class DeckResource extends CrudResource<Deck> {
 
-	UserRepository repository;
+	DeckRepository repository;
 	
-	public UserResource(UserRepository repository) {
+	public DeckResource(DeckRepository repository) {
 		this.repository = repository;
 	}
 	
-	protected JpaRepository<User, Long> getRepository() {
+	protected JpaRepository<Deck, Long> getRepository() {
 		return repository;
 	}
-
+	
 }
