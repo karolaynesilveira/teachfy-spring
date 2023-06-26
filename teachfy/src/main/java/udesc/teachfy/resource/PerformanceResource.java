@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import udesc.teachfy.model.Performance;
 import udesc.teachfy.repository.PerformanceRepository;
 
-@RequestMapping(path="/answers")
+@RequestMapping(path="/performances")
 @RestController
 public class PerformanceResource extends CrudResource<Performance> {
 

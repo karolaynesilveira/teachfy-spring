@@ -34,7 +34,7 @@ abstract public class CrudResource<M> {
 	@PostMapping
 	public ResponseEntity<Response<M>> create(@RequestBody M record) {
 		try {
-			M newRecord = getRepository().save(record); 
+			M newRecord = getRepository().saveAndFlush(record); 
 			return new ResponseEntity(new Response("Registro salvo com sucesso", newRecord), HttpStatus.OK);
 		} catch (Exception except) {
 			return new ResponseEntity(new Response(except.getMessage()), HttpStatus.BAD_REQUEST);

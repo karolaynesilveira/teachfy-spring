@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import udesc.teachfy.model.Option;
 import udesc.teachfy.repository.OptionRepository;
 
-@RequestMapping(path="/answers")
+@RequestMapping(path="/options")
 @RestController
 public class OptionResource extends CrudResource<Option> {
 

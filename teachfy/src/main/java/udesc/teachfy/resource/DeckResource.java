@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import udesc.teachfy.model.Deck;
 import udesc.teachfy.repository.DeckRepository;
 
-@RequestMapping(path="/answers")
+@RequestMapping(path="/decks")
 @RestController
 public class DeckResource extends CrudResource<Deck> {
 

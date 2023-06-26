@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import udesc.teachfy.model.Participant;
 import udesc.teachfy.repository.ParticipantRepository;
 
-@RequestMapping(path="/answers")
+@RequestMapping(path="/participants")
 @RestController
 public class ParticipantResource extends CrudResource<Participant> {
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import udesc.teachfy.model.Folder;
 import udesc.teachfy.repository.FolderRepository;
 
-@RequestMapping(path="/answers")
+@RequestMapping(path="/folders")
 @RestController
 public class FolderResource extends CrudResource<Folder> {
 
