@@ -3,6 +3,7 @@ package udesc.teachfy.resource;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,19 +14,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import udesc.teachfy.controller.CrudController;
 import udesc.teachfy.dto.Response;
 
 @RestController
 abstract public class CrudResource<M> {
 
-	protected abstract CrudController<M> getController();
+	protected abstract JpaRepository<M, Long> getRepository();
 
 	@GetMapping
 	public ResponseEntity<Response<List<M>>> all() {
 		try {
-			List<M> resultSet = getController().all();
-			return new ResponseEntity(new Response("Dados encontrados com sucesso", resultSet), HttpStatus.OK);			
+			List<M> records = getRepository().findAll();
+			return new ResponseEntity(new Response("Dados encontrados com sucesso", records), HttpStatus.OK);			
 		} catch (Exception except) {
 			return new ResponseEntity(new Response(except.getMessage()), HttpStatus.BAD_REQUEST);
 		}
@@ -34,7 +34,7 @@ abstract public class CrudResource<M> {
 	@PostMapping
 	public ResponseEntity<Response<M>> create(@RequestBody M record) {
 		try {
-			M newRecord = getController().create(record); 
+			M newRecord = getRepository().saveAndFlush(record); 
 			return new ResponseEntity(new Response("Registro salvo com sucesso", newRecord), HttpStatus.OK);
 		} catch (Exception except) {
 			return new ResponseEntity(new Response(except.getMessage()), HttpStatus.BAD_REQUEST);
@@ -44,7 +44,7 @@ abstract public class CrudResource<M> {
 	@GetMapping("/{id}")
 	public ResponseEntity<Response<M>> show(@PathVariable Long id) {
 		try {
-			Optional<M> record = getController().show(id);
+			Optional<M> record = getRepository().findById(id);
 			if (!record.isEmpty()) {
 				return new ResponseEntity(new Response("Registro encontrado com sucesso", record.get()), HttpStatus.OK);
 			}
@@ -57,8 +57,9 @@ abstract public class CrudResource<M> {
 	@PutMapping("/{id}")
 	public ResponseEntity<Response<M>> update(@RequestBody M record, @PathVariable Long id) {
 		try {
-			Optional<M> newRecord = getController().update(record, id);
+			Optional<M> newRecord = getRepository().findById(id);
 			if (!newRecord.isEmpty()) {
+				//set new data
 				return new ResponseEntity(new Response("Registro alterado com sucesso", newRecord.get()), HttpStatus.OK);
 			}
 			return new ResponseEntity(new Response("Registro não encontrado"), HttpStatus.NOT_FOUND);			
@@ -70,7 +71,7 @@ abstract public class CrudResource<M> {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Response> delete(@PathVariable Long id) {
 		try {
-			getController().delete(id);
+			getRepository().deleteById(id);
 			return new ResponseEntity(new Response("Removido com sucesso"), HttpStatus.OK);
 		} catch (Exception except) {
 			return new ResponseEntity(new Response(except.getMessage()), HttpStatus.BAD_REQUEST);

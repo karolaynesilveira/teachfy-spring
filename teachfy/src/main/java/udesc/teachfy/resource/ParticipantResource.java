@@ -1,24 +1,24 @@
 package udesc.teachfy.resource;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import udesc.teachfy.controller.CrudController;
-import udesc.teachfy.controller.ParticipantController;
 import udesc.teachfy.model.Participant;
+import udesc.teachfy.repository.ParticipantRepository;
 
 @RequestMapping(path="/participants")
 @RestController
 public class ParticipantResource extends CrudResource<Participant> {
 
-	ParticipantController controller;
+	ParticipantRepository repository;
 	
-	public ParticipantResource(ParticipantController controller) {
-		this.controller = controller;
+	public ParticipantResource(ParticipantRepository repository) {
+		this.repository = repository;
 	}
 	
-	protected CrudController<Participant> getController() {
-		return controller;
+	protected JpaRepository<Participant, Long> getRepository() {
+		return repository;
 	}
 	
 }
