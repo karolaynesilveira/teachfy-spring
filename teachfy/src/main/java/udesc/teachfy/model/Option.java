@@ -27,7 +27,7 @@ public class Option {
 	
 	@NotNull
 	@Column(columnDefinition="smallint")
-	private int correctAnswer;
+	private int correct_answer;
 
 	public Option() {}
 
@@ -36,7 +36,7 @@ public class Option {
 		this.id = id;
 		this.card = card;
 		this.description = description;
-		this.correctAnswer = correct_answer;
+		this.correct_answer = correct_answer;
 	}
 
 	public Long getId() {
@@ -63,12 +63,12 @@ public class Option {
 		this.description = description;
 	}
 
-	public int getCorrectAnswer() {
-		return correctAnswer;
+	public int getCorrect_answer() {
+		return correct_answer;
 	}
 
-	public void setCorrectAnswer(int correct_answer) {
-		this.correctAnswer = correct_answer;
+	public void setCorrect_answer(int correct_answer) {
+		this.correct_answer = correct_answer;
 	}
 	
 }

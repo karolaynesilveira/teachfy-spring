@@ -16,10 +16,5 @@ public class ParticipantController extends CrudController<Participant> {
 	protected JpaRepository<Participant, Long> getRepository() {
 		return repository;
 	}
-
-	@Override
-	protected void setDataForUpdate(Participant older, Participant newer) {
-		older.setPermission(newer.getPermission());
-	}
 	
 }
