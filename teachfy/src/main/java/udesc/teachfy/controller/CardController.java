@@ -16,5 +16,13 @@ public class CardController extends CrudController<Card> {
 	protected JpaRepository<Card, Long> getRepository() {
 		return repository;
 	}
+
+	@Override
+	protected void setDataForUpdate(Card older, Card newer) {
+		older.setType(newer.getType());
+		older.setQuestion(newer.getQuestion());
+		older.setAnswer(newer.getAnswer());
+		older.setPoints(newer.getPoints());
+	}
 	
 }

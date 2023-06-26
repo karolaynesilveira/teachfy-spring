@@ -16,5 +16,11 @@ public class OptionController extends CrudController<Option> {
 	protected JpaRepository<Option, Long> getRepository() {
 		return repository;
 	}
+
+	@Override
+	protected void setDataForUpdate(Option older, Option newer) {
+		older.setDescription(newer.getDescription());
+		older.setCorrectAnswer(newer.getCorrectAnswer());
+	}
 	
 }

@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import udesc.teachfy.model.User;
+
 abstract public class CrudController<M> {
 
 	protected abstract JpaRepository<M, Long> getRepository();
@@ -22,8 +24,15 @@ abstract public class CrudController<M> {
 	}
 
 	public Optional<M> update(M record, Long id) {
-		return getRepository().findById(id);
+		Optional<M> older = getRepository().findById(id);
+		if (older.isPresent()) {
+			setDataForUpdate(older.get(), record);
+			getRepository().saveAndFlush(older.get());
+		}
+		return older;
 	}
+	
+	protected void setDataForUpdate(M older, M newer) {}
 
 	public void delete(Long id) {
 		getRepository().deleteById(id);

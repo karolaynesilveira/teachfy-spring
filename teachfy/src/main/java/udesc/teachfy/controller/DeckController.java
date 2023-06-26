@@ -16,5 +16,15 @@ public class DeckController extends CrudController<Deck> {
 	protected JpaRepository<Deck, Long> getRepository() {
 		return repository;
 	}
+
+	@Override
+	protected void setDataForUpdate(Deck older, Deck newer) {
+		older.setFolder(newer.getFolder());
+		older.setName(newer.getName());
+		older.setPublico(newer.getPublico());
+		older.setClonable(newer.getClonable());
+		older.setFeedback(newer.getFeedback());		
+		older.setType(newer.getType());
+	}
 	
 }

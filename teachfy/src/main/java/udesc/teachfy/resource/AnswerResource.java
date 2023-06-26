@@ -12,7 +12,7 @@ import udesc.teachfy.model.Answer;
 public class AnswerResource extends CrudResource<Answer> {
 
 	AnswerController controller;
-	
+
 	public AnswerResource(AnswerController controller) {
 		this.controller = controller;
 	}

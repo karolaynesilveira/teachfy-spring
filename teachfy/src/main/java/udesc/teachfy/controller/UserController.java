@@ -22,7 +22,16 @@ public class UserController extends CrudController<User>{
 	public User create(User record) {
 		BCryptPasswordEncoder bcrypy = new BCryptPasswordEncoder();
         record.setPassword(bcrypy.encode(record.getPassword()));
-		return getRepository().saveAndFlush(record);
+		return super.create(record);
+	}
+
+	@Override
+	protected void setDataForUpdate(User older, User newer) {
+		older.setName(newer.getName());
+		older.setEmail(newer.getEmail());
+
+		BCryptPasswordEncoder bcrypy = new BCryptPasswordEncoder();
+		older.setPassword(bcrypy.encode(newer.getPassword()));
 	}
 	
 }
