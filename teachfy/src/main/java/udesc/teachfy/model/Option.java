@@ -26,17 +26,17 @@ public class Option {
 	private String description;
 	
 	@NotNull
-	@Column(columnDefinition="smallint")
-	private int correct_answer;
+	@Column(name="correct_answer", columnDefinition="smallint")
+	private int correctAnswer;
 
 	public Option() {}
 
-	public Option(Long id, @NotNull Card card, @NotNull String description, @NotNull int correct_answer) {
+	public Option(Long id, @NotNull Card card, @NotNull String description, @NotNull int correctAnswer) {
 		super();
 		this.id = id;
 		this.card = card;
 		this.description = description;
-		this.correct_answer = correct_answer;
+		this.correctAnswer = correctAnswer;
 	}
 
 	public Long getId() {
@@ -63,12 +63,12 @@ public class Option {
 		this.description = description;
 	}
 
-	public int getCorrect_answer() {
-		return correct_answer;
+	public int getCorrectAnswer() {
+		return correctAnswer;
 	}
 
-	public void setCorrect_answer(int correct_answer) {
-		this.correct_answer = correct_answer;
+	public void setCorrectAnswer(int correctAnswer) {
+		this.correctAnswer = correctAnswer;
 	}
 	
 }
