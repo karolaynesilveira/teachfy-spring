@@ -17,6 +17,7 @@ public class Card {
 	@GeneratedValue
 	private Long id;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "deck_id", referencedColumnName = "id")
 	private Deck deck;

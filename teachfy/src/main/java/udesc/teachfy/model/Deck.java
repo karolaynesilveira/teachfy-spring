@@ -1,11 +1,16 @@
 package udesc.teachfy.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +28,6 @@ public class Deck {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private User user;
 
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "folder_id", referencedColumnName = "id")
 	private Folder folder;
@@ -46,6 +50,13 @@ public class Deck {
 	@NotNull
 	@Column(columnDefinition="smallint")
 	private int type;
+	
+	@OneToMany(
+			mappedBy = "deck",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+	)
+	private List<Card> cards = new ArrayList<>();
 
 	public Deck() {}
 	
@@ -123,6 +134,14 @@ public class Deck {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
 	}
 	
 }
