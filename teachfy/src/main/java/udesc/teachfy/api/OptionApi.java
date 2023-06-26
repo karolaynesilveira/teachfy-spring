@@ -1,4 +1,4 @@
-package udesc.teachfy.resource;
+package udesc.teachfy.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +9,11 @@ import udesc.teachfy.model.Option;
 
 @RequestMapping(path="/options")
 @RestController
-public class OptionResource extends CrudResource<Option> {
+public class OptionApi extends CrudApi<Option> {
 
 	OptionController controller;
 	
-	public OptionResource(OptionController controller) {
+	public OptionApi(OptionController controller) {
 		this.controller = controller;
 	}
 	

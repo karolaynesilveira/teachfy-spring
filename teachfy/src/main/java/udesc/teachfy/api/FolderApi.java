@@ -1,4 +1,4 @@
-package udesc.teachfy.resource;
+package udesc.teachfy.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +9,11 @@ import udesc.teachfy.model.Folder;
 
 @RequestMapping(path="/folders")
 @RestController
-public class FolderResource extends CrudResource<Folder> {
+public class FolderApi extends CrudApi<Folder> {
 
 	FolderController controller;
 	
-	public FolderResource(FolderController controller) {
+	public FolderApi(FolderController controller) {
 		this.controller = controller;
 	}
 	

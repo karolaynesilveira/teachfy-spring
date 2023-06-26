@@ -1,4 +1,4 @@
-package udesc.teachfy.resource;
+package udesc.teachfy.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +9,11 @@ import udesc.teachfy.model.Answer;
 
 @RequestMapping(path="/answers")
 @RestController
-public class AnswerResource extends CrudResource<Answer> {
+public class AnswerApi extends CrudApi<Answer> {
 
 	AnswerController controller;
 
-	public AnswerResource(AnswerController controller) {
+	public AnswerApi(AnswerController controller) {
 		this.controller = controller;
 	}
 	

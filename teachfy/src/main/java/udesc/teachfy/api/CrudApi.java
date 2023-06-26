@@ -1,4 +1,4 @@
-package udesc.teachfy.resource;
+package udesc.teachfy.api;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +17,7 @@ import udesc.teachfy.controller.CrudController;
 import udesc.teachfy.dto.Response;
 
 @RestController
-abstract public class CrudResource<M> {
+abstract public class CrudApi<M> {
 
 	protected abstract CrudController<M> getController();
 

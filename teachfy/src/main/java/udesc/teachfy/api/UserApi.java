@@ -1,4 +1,4 @@
-package udesc.teachfy.resource;
+package udesc.teachfy.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +9,11 @@ import udesc.teachfy.model.User;
 
 @RequestMapping(path="/users")
 @RestController
-public class UserResource extends CrudResource<User>{
+public class UserApi extends CrudApi<User>{
 
 	UserController controller;
 	
-	public UserResource(UserController controller) {
+	public UserApi(UserController controller) {
 		this.controller = controller;
 	}
 	

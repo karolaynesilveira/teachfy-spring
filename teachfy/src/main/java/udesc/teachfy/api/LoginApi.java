@@ -1,4 +1,4 @@
-package udesc.teachfy.resource;
+package udesc.teachfy.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import udesc.teachfy.model.User;
 import udesc.teachfy.service.TokenService;
 
 @RestController
-public class LoginResource {
+public class LoginApi {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;

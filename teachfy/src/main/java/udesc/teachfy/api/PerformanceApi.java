@@ -1,4 +1,4 @@
-package udesc.teachfy.resource;
+package udesc.teachfy.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +9,11 @@ import udesc.teachfy.model.Performance;
 
 @RequestMapping(path="/performances")
 @RestController
-public class PerformanceResource extends CrudResource<Performance> {
+public class PerformanceApi extends CrudApi<Performance> {
 
 	PerformanceController controller;
 	
-	public PerformanceResource(PerformanceController controller) {
+	public PerformanceApi(PerformanceController controller) {
 		this.controller = controller;
 	}
 	
